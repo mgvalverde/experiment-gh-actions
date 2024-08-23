@@ -1,0 +1,62 @@
+# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Test package
+run-name: Test GitHub Actions - ${{github.ref_name}} 🚀
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+env:
+  POETRY_VERSION: "1.8.3"
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [ "3.9", "3.10", "3.11", "3.12" ]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Poetry
+        run: pipx install poetry==${{ env.POETRY_VERSION }}
+
+      - name: Set up python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: poetry install --all-extras
+
+      - name: Lint with ruff
+        run: poetry run ruff check ./
+
+      - name: Lint with bandit
+        run: poetry run bandit -r ./blabla/ --quiet
+
+      - name: Test with pytest
+        if: ${{ matrix.python-version != '3.9'}}  # Run test for every version other than 3.9, 3.9 is handled in Coverage report
+        run: poetry run pytest
+
+      - name: Coverage report
+        if: ${{ matrix.python-version == '3.9'}}
+        run: |
+          poetry run coverage run -m pytest
+          poetry run coverage report
+          poetry run coverage html
+
+      - name: Archive code coverage html report    #
+        if: ${{ matrix.python-version == '3.9'}}
+        uses: actions/upload-artifact@v2
+        with:
+          name: code-coverage-report
+          path: htmlcov
