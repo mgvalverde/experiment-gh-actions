@@ -44,15 +44,7 @@ jobs:
         run: poetry run bandit -r ./blabla/ --quiet
 
       - name: Test with pytest
-        if: ${{ matrix.python-version != '3.9'}}  # Run test for every version other than 3.9, 3.9 is handled in Coverage report
-        run: poetry run pytest
-
-      - name: Coverage report
-        if: ${{ matrix.python-version == '3.9'}}
-        run: |
-          poetry run coverage run -m pytest
-          poetry run coverage report
-          poetry run coverage html
+        run: poetry run pytest tests/ --cov=pycounts --cov-report=xml
 
       - name: Archive code coverage html report    #
         if: ${{ matrix.python-version == '3.9'}}

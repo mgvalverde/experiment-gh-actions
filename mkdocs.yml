@@ -1,0 +1,14 @@
+site_name: Blabla Docs
+
+theme:
+  name: material
+
+plugins:
+  - mkdocstrings
+
+nav:
+  - Welcome: index.md
+  - Tutorials: tutorials.md
+  - How-to guides: how-to-guides.md
+  - Explanation: explanation.md
+  - Reference: reference.md
