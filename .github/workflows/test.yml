@@ -52,3 +52,6 @@ jobs:
         with:
           name: code-coverage-report
           path: htmlcov
+
+      - name: Test build docs
+        run: poetry run mkdocs build
