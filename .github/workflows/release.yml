@@ -42,8 +42,8 @@ jobs:
         with:
           fetch-depth: 0
 
-#      - name: Install dependencies
-#        run: poetry install --no-interaction --all-extras  # NOTE: is this needed
+      - name: Install dev dependencies
+        run: poetry install --no-interaction --only=dev  # NOTE: is this needed
 
       - name: Use Python Semantic Release to prepare release
         id: release
