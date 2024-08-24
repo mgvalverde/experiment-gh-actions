@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "experiment-gh-actions"
-version = "0.0.0"
+version = "0.1.1"
 description = ""
 authors = ["No one <you@example.com>"]
 readme = "README.md"
@@ -31,4 +31,4 @@ build-backend = "poetry.core.masonry.api"
 version_toml = ["pyproject.toml:tool.poetry.version",]   # version location
 branch = "main"                                          # branch to make releases of
 changelog_file = "CHANGELOG.md"                          # changelog file
-build_command = "poetry build"     # build dists
+#build_command = "poetry build"     # build dists
