@@ -56,8 +56,9 @@ jobs:
         with:
           repository-url: https://test.pypi.org/legacy/
 
-      - name: Test install from TestPyPI
+      - name: Test install from TestPyPI        # Note: needs to sleep to give a PyPI a moment, otherwise it installs the previous version
         run: |
+            sleep 5
             pip install \
             --index-url https://test.pypi.org/simple/ \
             --extra-index-url https://pypi.org/simple \

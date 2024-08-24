@@ -31,4 +31,4 @@ build-backend = "poetry.core.masonry.api"
 version_toml = ["pyproject.toml:tool.poetry.version",]   # version location
 branch = "main"                                          # branch to make releases of
 changelog_file = "CHANGELOG.md"                          # changelog file
-build_command = "pip install poetry -U && poetry build"     # build dists
+build_command = "pip install poetry -U && poetry build"     # build dists; needs to install poetry to work with GH Actions
