@@ -34,12 +34,8 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
-#      - name: Install Poetry v${{ env.POETRY_VERSION }}
-#        run: pipx install poetry==${{ env.POETRY_VERSION }}
-      - name: Install poetry
-        uses: snok/install-poetry@v1
-        with:
-          version: ${{ env.POETRY_VERSION }}
+      - name: Install Poetry v${{ env.POETRY_VERSION }}
+        run: pipx install poetry==${{ env.POETRY_VERSION }}
 
       - name: Checkout code
         uses: actions/checkout@v4
