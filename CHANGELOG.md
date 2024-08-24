@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.7 (2024-08-24)
+
+### Fix
+
+* fix: hey 9 ([`f25cd17`](https://github.com/mgvalverde/experiment-gh-actions/commit/f25cd17ded270fae3bc1214bcfe5bdb83f73b6ae))
+
 ## v0.1.6 (2024-08-24)
 
 ### Fix
