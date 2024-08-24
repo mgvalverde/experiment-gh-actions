@@ -15,7 +15,7 @@ env:
 jobs:
 
   release:
-    name: Upload release to Test PyPI
+    name: CD
     runs-on: ubuntu-latest
     environment:
       name: pypi
