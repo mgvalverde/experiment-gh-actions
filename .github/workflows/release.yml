@@ -2,7 +2,8 @@ name: Release
 
 on:
   push:
-  workflow_dispatch:
+    branches:
+      - main
 
 permissions:
   contents: read
@@ -15,7 +16,7 @@ env:
 jobs:
 
   release:
-    name: CD
+    name: Continuous Deployment
     runs-on: ubuntu-latest
     environment:
       name: pypi
@@ -24,8 +25,6 @@ jobs:
     permissions:
       id-token: write
       contents: write
-
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
     steps:
 
@@ -63,6 +62,7 @@ jobs:
             --index-url https://test.pypi.org/simple/ \
             --extra-index-url https://pypi.org/simple \
             experiment-gh-actions
+           python -c "import blabla; print('Import successful')" 
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
