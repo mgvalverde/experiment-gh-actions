@@ -1,8 +1,16 @@
 # CHANGELOG
 
+## v0.1.2 (2024-08-24)
+
+### Unknown
+
+* Merge branch &#39;main&#39; of github.com:mgvalverde/experiment-gh-actions into main ([`e0fd802`](https://github.com/mgvalverde/experiment-gh-actions/commit/e0fd80297a02444e69f24136946a03fabb7b1fed))
+
 ## v0.1.1 (2024-08-24)
 
 ### Fix
+
+* fix: hey 6 ([`3fe2396`](https://github.com/mgvalverde/experiment-gh-actions/commit/3fe23961ff1378afa994ae61c4e84074bb925092))
 
 * fix: hey 5 ([`398d2ac`](https://github.com/mgvalverde/experiment-gh-actions/commit/398d2ac8a79bbcc408d700174f6b3839a2f49109))
 
