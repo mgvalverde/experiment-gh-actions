@@ -78,4 +78,4 @@ jobs:
         run: poetry run mkdocs build
 
       - name: Publish docs
-        run: poetry run gh-deploy
+        run: poetry run mkdocs gh-deploy
