@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.4 (2024-08-24)
+
+### Fix
+
+* fix: hey 8 ([`ab70dc3`](https://github.com/mgvalverde/experiment-gh-actions/commit/ab70dc3441779a1624782342b8b1b78af8b3524e))
+
 ## v0.1.3 (2024-08-24)
 
 ### Fix

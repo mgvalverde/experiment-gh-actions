@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "experiment-gh-actions"
-version = "0.1.3"
+version = "0.1.4"
 description = ""
 authors = ["No one <you@example.com>"]
 readme = "README.md"
