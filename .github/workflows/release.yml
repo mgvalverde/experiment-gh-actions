@@ -62,7 +62,7 @@ jobs:
             --index-url https://test.pypi.org/simple/ \
             --extra-index-url https://pypi.org/simple \
             experiment-gh-actions
-           python -c "import blabla; print('Import successful')" 
+            python -c "import blabla; print('Import successful')" 
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
