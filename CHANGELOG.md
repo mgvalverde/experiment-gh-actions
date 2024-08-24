@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.3 (2024-08-24)
+
+### Fix
+
+* fix: hey 7 ([`2876148`](https://github.com/mgvalverde/experiment-gh-actions/commit/2876148d840eb425c1a91297a1389df88487f4e2))
+
 ## v0.1.2 (2024-08-24)
 
 ### Unknown
