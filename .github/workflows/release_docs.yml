@@ -5,9 +5,10 @@ on:
   workflow_call:
     inputs:
       ref:
-        description: "Commit's tag. It'll be use to tag also the docs version. This tag must exists, and applied to an existing commit"
+        description: "Tag. It'll be use to tag also the docs version. This tag must exists, and applied to an existing commit"
         type: string
         required: true
+        default: ""
 
 env:
   POETRY_VERSION: "1.8.3"
