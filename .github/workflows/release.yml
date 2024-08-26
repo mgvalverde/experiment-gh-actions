@@ -46,9 +46,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: python-package-distributions
-          path: |
-            CHANGELOG.md
-            dist/
+          path: dist/
           if-no-files-found: 'error'
 
   publish-to-test-pypi:
@@ -66,9 +64,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: python-package-distributions
-          path: |
-            CHANGELOG.md
-            dist/
+          path: dist/
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
