@@ -2,7 +2,9 @@ name: Publish Docs
 
 on:
   workflow_dispatch:
-  workflow_call:
+  push:
+    tags:
+      - 'v*.*.*'
 
 env:
   POETRY_VERSION: "1.8.3"
@@ -37,16 +39,10 @@ jobs:
       - name: Install dev dependencies
         run: poetry install --no-interaction --only=dev  # NOTE: this is needed for mkdocs etc
       - name: Set env
-        run: | 
-          if [ -z "${{ github.ref_name }}" ]; then
-              echo "PKG_VERSION=$(poetry run semantic-release version --print-last-released)" >> $GITHUB_ENV
-            else  
-              echo "PKG_VERSION=${{ github.ref_name }}" >> $GITHUB_ENV
-          fi
-
+        run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
       - name: Publish new docs version
         run: poetry run mike deploy \
           --push \
-          --update-aliases ${{env.PKG_VERSION}} latest
+          --update-aliases ${{env.TAG_NAME}} latest
       - name: Set alias for latest
         run: poetry run mike set-default --push latest
