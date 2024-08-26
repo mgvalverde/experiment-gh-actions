@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v0.10.0 (2024-08-26)
+
+### Feature
+
+* feat: 13 ([`49eb199`](https://github.com/mgvalverde/experiment-gh-actions/commit/49eb19949903599976ec5d57463b1b33dc9e4457))
+
+* feat: 12 ([`30c1e8b`](https://github.com/mgvalverde/experiment-gh-actions/commit/30c1e8b96378c6d1240da9c8e4318c476d5a98eb))
+
 ## v0.9.0 (2024-08-26)
 
 ### Feature
