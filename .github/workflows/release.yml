@@ -11,6 +11,7 @@ permissions:
 env:
   POETRY_VERSION: "1.8.3"
   PYTHON_VERSION: "3.9"
+  PCKG_NAME: experiment-gh-actions
 
 
 jobs:
@@ -70,11 +71,24 @@ jobs:
         with:
           repository-url: https://test.pypi.org/legacy/
 
+  test-installation-testpypi:
+    name: Test installation from Test PyPI
+    runs-on: ubuntu-latest
+    needs:
+      - publish-to-test-pypi
+    steps:
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Installation test
+        run: pipx install ${{PCKG_NAME}}
+
   publish-to-pypi:
     name: Publish to PyPI
     runs-on: ubuntu-latest
     needs:
-      - publish-to-test-pypi
+      - test-installation-testpypi
 
     permissions:
       id-token: write
