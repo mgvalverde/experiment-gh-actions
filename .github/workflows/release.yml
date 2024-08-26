@@ -11,7 +11,6 @@ permissions:
 env:
   POETRY_VERSION: "1.8.3"
   PYTHON_VERSION: "3.9"
-  PCKG_NAME: experiment-gh-actions
 
 
 jobs:
@@ -82,7 +81,10 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       - name: Installation test
-        run: pipx install ${{PCKG_NAME}}
+        run: |
+          pipx install -i https://test.pypi.org/simple/ experiment-gh-actions
+          python -c "import blabla; print('Package successfully installed')"
+          
 
   publish-to-pypi:
     name: Publish to PyPI
