@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## v0.17.0 (2024-08-26)
+
+### Feature
+
+* feat: 27 ([`469ec8e`](https://github.com/mgvalverde/experiment-gh-actions/commit/469ec8ead16064f30c00dddb17cd26bbd50efdf8))
+
+* feat: 26 ([`da4f0e8`](https://github.com/mgvalverde/experiment-gh-actions/commit/da4f0e81f8747516f5be5b0a5e7b76502fdd0f0b))
+
+* feat: 26 ([`2b47bbc`](https://github.com/mgvalverde/experiment-gh-actions/commit/2b47bbc768263df7ebb6056239a23b8505f13886))
+
+* feat: 26 ([`e3644c0`](https://github.com/mgvalverde/experiment-gh-actions/commit/e3644c041d34c60211a2367b4ce72e351369a9ad))
+
+* feat: 25 ([`35e8016`](https://github.com/mgvalverde/experiment-gh-actions/commit/35e801624736e02bc78e87d9c4faf54c657c305a))
+
+* feat: 25 ([`bb71d15`](https://github.com/mgvalverde/experiment-gh-actions/commit/bb71d15c41772a1e84ee2e966d2f793790e3739b))
+
+* feat: 25 ([`6d0e7a1`](https://github.com/mgvalverde/experiment-gh-actions/commit/6d0e7a176a3d2869decdc8817c95334116918548))
+
+* feat: 25 ([`46a3dc3`](https://github.com/mgvalverde/experiment-gh-actions/commit/46a3dc32e9d0564da9deafe8747bd7a3ed456e93))
+
+* feat: 25 ([`1083230`](https://github.com/mgvalverde/experiment-gh-actions/commit/1083230aa2904feafb42ba7336759bee3ba81c9b))
+
+* feat: 25 ([`bdaba94`](https://github.com/mgvalverde/experiment-gh-actions/commit/bdaba947dd24e25ecd1184a69c6f30c1e5dcbe0b))
+
 ## v0.16.0 (2024-08-26)
 
 ### Feature
