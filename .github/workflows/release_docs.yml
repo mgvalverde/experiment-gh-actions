@@ -2,13 +2,18 @@ name: Publish Docs
 
 on:
   workflow_dispatch:
-
+    inputs:
+      ref_tag:
+        description: "Tag. It'll be use to tag also the docs version. This tag must exist, and applied to an existing commit"
+        type: string
+        required: false
+        default: ""
   workflow_call:
     inputs:
       ref_tag:
         description: "Tag. It'll be use to tag also the docs version. This tag must exist, and applied to an existing commit"
         type: string
-        required: true
+        required: false
         default: ""
 
 env:
@@ -26,7 +31,8 @@ jobs:
       contents: write
 
     env:
-      ref_tag: ${{inputs.ref_tag}}
+      TARGET_VERSION: ${{inputs.ref_tag}}
+      SHORT_VERSION: $(echo ${{inputs.ref_tag}}  | sed -E 's/(v[0-9]+\.[0-9]+)\.[0-9]+/\1.x/')
 
     steps:
       - name: Set up Python ${{ env.PYTHON_VERSION }}
@@ -39,8 +45,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: "${{input.ref_tag}}"
-
+          ref: "v${{env.TARGET_VERSION}}"
       - name: Setup git user
         run: |
           git config user.name github-actions
@@ -50,6 +55,7 @@ jobs:
       - name: Publish new docs version
         run: poetry run mike deploy \
           --push \
-          --update-aliases "${{input.ref_tag}}" latest
+          --update-aliases "v${{env.SHORT_VERSION}}" latest
       - name: Set alias for latest
         run: poetry run mike set-default latest --push
+

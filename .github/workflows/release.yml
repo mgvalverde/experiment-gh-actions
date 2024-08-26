@@ -170,8 +170,6 @@ jobs:
       - name: Install dev dependencies
         run: poetry install --no-interaction --only=dev  # NOTE: this is needed for mkdocs etc
       - name: Publish new docs version
-        env:
-          TARGET_VERSION: ${{needs.build.outputs.target_version}}
         run: poetry run mike deploy \
           --push \
           --update-aliases "v${{env.TARGET_VERSION}}" latest
