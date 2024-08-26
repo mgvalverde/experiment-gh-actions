@@ -23,6 +23,9 @@ jobs:
       id-token: write
       contents: write
 
+    outputs:
+      target_version: ${{ steps.step1.outputs.target_version }}
+
     steps:
       - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v5
@@ -87,7 +90,7 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
       - name: Installation test
         run: |
-          pip install -i https://test.pypi.org/simple/ experiment-gh-actions
+          pip install -i https://test.pypi.org/simple/ experiment-gh-actions==${{needs.build.outputs.target_version}}
           python -c "import blabla; print('Package successfully installed')"
 
 
