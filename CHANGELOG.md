@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.14.2 (2024-08-26)
+
+### Fix
+
+* fix: 20 ([`d0e266f`](https://github.com/mgvalverde/experiment-gh-actions/commit/d0e266f3850336135dbb6e3a6d5a7bb36500a1aa))
+
 ## v0.14.1 (2024-08-26)
 
 ### Fix
