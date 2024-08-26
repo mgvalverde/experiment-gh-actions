@@ -29,6 +29,9 @@ jobs:
         run: pipx install poetry==${{ env.POETRY_VERSION }}
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Install dev dependencies
         run: poetry install --no-interaction --only=dev  # NOTE: this is needed for mkdocs etc
 #      - name: Build docs
