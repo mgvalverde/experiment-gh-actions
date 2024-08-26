@@ -84,7 +84,7 @@ jobs:
         run: |
           pip install -i https://test.pypi.org/simple/ experiment-gh-actions
           python -c "import blabla; print('Package successfully installed')"
-          
+
 
   publish-to-pypi:
     name: Publish to PyPI
