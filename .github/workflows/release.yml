@@ -54,7 +54,7 @@ jobs:
 
       - name: Save Tag reference
         id: export_version
-        run: echo "target_version=$(poetry run semantic-release version --print-last-released)" >> $GITHUB_OUTPUT
+        run: echo "target_version=$(git describe --exact-match | cut -c2-)" >> $GITHUB_OUTPUT
 
   check:
     name: Checks previous outputs
