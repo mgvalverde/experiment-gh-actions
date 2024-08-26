@@ -1,9 +1,9 @@
 name: Extract Tag Example  
 
 on:  
-  push:  
-    tags:  
-      - '*'  
+  workflow_dispatch:
+  workflow_call:
+  
 
 jobs:  
   extract-tag:  
