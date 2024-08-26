@@ -3,6 +3,12 @@ name: Publish Docs
 on:
   workflow_dispatch:
   workflow_call:
+    inputs:
+      tag:
+        default: ""
+        required: false
+        type: string
+        description: "Ref Tag"
 
 env:
   POETRY_VERSION: "1.8.3"
@@ -28,6 +34,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
+          ref: ${{inputs.tag}}
           fetch-depth: 0
       - name: Setup git user
         run: |
@@ -41,6 +48,6 @@ jobs:
       - name: Publish new docs version
         run: poetry run mike deploy \
           --push \
-          --update-aliases ${{env.PKG_VERSION}} latest  # Calls another workflow
+          --update-aliases ${{env.PKG_VERSION}} latest
       - name: Set alias for latest
         run: poetry run mike set-default --push latest
