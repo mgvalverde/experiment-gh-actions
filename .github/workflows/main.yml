@@ -1,0 +1,20 @@
+name: Extract Tag Example  
+
+on:  
+  push:  
+    tags:  
+      - '*'  
+
+jobs:  
+  extract-tag:  
+    runs-on: ubuntu-latest  
+    steps:  
+      - name: Checkout code  
+        uses: actions/checkout@v2  
+
+      - name: Extract tag name  
+        id: extract_tag  
+        run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV  
+
+      - name: Use the tag name  
+        run: echo "The tag name is ${{env.TAG_NAME}}"
