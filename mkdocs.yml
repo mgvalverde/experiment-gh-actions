@@ -8,7 +8,7 @@ plugins:
   - tags:
       tags_file: tags.md
 
-site_url: 'http://localhost:8000/'  # Trailing slash is recommended
+site_url: 'https://mgvalverde.github.io/experiment-gh-actions/'  # Trailing slash is recommended
 
 #repo_name: mgvalverde/experiment-gh-actions  # hidden; too long
 repo_url: https://github.com/mgvalverde/experiment-gh-actions
