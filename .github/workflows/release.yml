@@ -50,7 +50,7 @@ jobs:
           if-no-files-found: 'error'
 
       - name: Save Tag reference
-        run: echo "TAG_VERSION=$(git describe --exact-match)" >> $GITHUB_ENV
+        run: echo "TAG_VERSION=$(git describe --exact-match)" >> $GITHUB_OUTPUT
 
 
   publish-to-test-pypi:
@@ -115,9 +115,11 @@ jobs:
 
   publish-docs:
     uses: ./.github/workflows/release_docs.yml
-    needs: test-installation-testpypi
+    needs:
+      - build
+      - test-installation-testpypi
     permissions:
       id-token: write
       contents: write
     with:
-      ref: tags/${{env.TAG_VERSION}}
+      ref: tags/${{needs.build.outputs.TAG_VERSION}}
