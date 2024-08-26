@@ -2,9 +2,7 @@ name: Publish Docs
 
 on:
   workflow_dispatch:
-  release:
-    types:
-      - published
+  workflow_call:
 
 env:
   POETRY_VERSION: "1.8.3"
@@ -37,9 +35,9 @@ jobs:
           git config user.email github-actions@github.com
       - name: Install dev dependencies
         run: poetry install --no-interaction --only=dev  # NOTE: this is needed for mkdocs etc
-      - name: Set alias for latest
-        run: poetry run mike set-default --push latest
       - name: Publish new docs version
         run: poetry run mike deploy \
           --push \
           --update-aliases $(semantic-release version --print-last-released) latest  # Calls another workflow
+      - name: Set alias for latest
+        run: poetry run mike set-default --push latest
