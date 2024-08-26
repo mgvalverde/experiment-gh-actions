@@ -113,6 +113,7 @@ jobs:
 
   publish-docs:
     uses: ./.github/workflows/release_docs.yml
+    needs: test-installation-testpypi
     permissions:
       id-token: write
       contents: write
