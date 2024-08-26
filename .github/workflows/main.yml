@@ -13,6 +13,9 @@ jobs:
       output1: ${{ steps.step1.outputs.target_tag }}
       output2: ${{ steps.step2.outputs.test }}
     steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - id: step1
         run: echo "target_tag=$(git describe --exact-match)" >> "$GITHUB_OUTPUT"
       - id: step2
