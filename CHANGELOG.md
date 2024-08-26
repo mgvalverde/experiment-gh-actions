@@ -1,8 +1,14 @@
 # CHANGELOG
 
-## v0.1.7 (2024-08-26)
+## v0.2.0 (2024-08-26)
+
+### Feature
+
+* feat: 1 ([`3ddce4b`](https://github.com/mgvalverde/experiment-gh-actions/commit/3ddce4b417158aa99a55a96a7b48b3d0a68bfaef))
 
 ### Fix
+
+* fix: 1 ([`984d1f1`](https://github.com/mgvalverde/experiment-gh-actions/commit/984d1f1905e7ab20d6a6f0f2422c5ee8d8cd5c71))
 
 * fix: hey 9 ([`f25cd17`](https://github.com/mgvalverde/experiment-gh-actions/commit/f25cd17ded270fae3bc1214bcfe5bdb83f73b6ae))
 
@@ -34,14 +40,6 @@
 
 ## v0.1.2 (2024-08-24)
 
-### Fix
-
-* fix: hey 6 ([`3fe2396`](https://github.com/mgvalverde/experiment-gh-actions/commit/3fe23961ff1378afa994ae61c4e84074bb925092))
-
-* fix: hey 5 ([`398d2ac`](https://github.com/mgvalverde/experiment-gh-actions/commit/398d2ac8a79bbcc408d700174f6b3839a2f49109))
-
-* fix: hey 5 ([`9ce8aed`](https://github.com/mgvalverde/experiment-gh-actions/commit/9ce8aed6f4995e3b6cb9f52516837d3088238f06))
-
 ### Unknown
 
 * Merge branch &#39;main&#39; of github.com:mgvalverde/experiment-gh-actions into main ([`e0fd802`](https://github.com/mgvalverde/experiment-gh-actions/commit/e0fd80297a02444e69f24136946a03fabb7b1fed))
@@ -50,15 +48,9 @@
 
 ### Fix
 
-* fix: hey 4 ([`0a3143e`](https://github.com/mgvalverde/experiment-gh-actions/commit/0a3143e4031ac168dff19498f215ce9f809d5203))
+* fix: hey 6 ([`3fe2396`](https://github.com/mgvalverde/experiment-gh-actions/commit/3fe23961ff1378afa994ae61c4e84074bb925092))
 
-* fix: hey 3 ([`39e8e67`](https://github.com/mgvalverde/experiment-gh-actions/commit/39e8e6792652c27544283ed2528ab299755aca0b))
-
-* fix: hey 2 ([`7505012`](https://github.com/mgvalverde/experiment-gh-actions/commit/75050129a405c1160ac0de40af033fa4b58aaa91))
-
-* fix: hey ([`6f190f9`](https://github.com/mgvalverde/experiment-gh-actions/commit/6f190f9f533753de69ead01f0ede361335b2cbee))
-
-* fix: hey ([`68b7892`](https://github.com/mgvalverde/experiment-gh-actions/commit/68b7892848643734dee2f41580c73f48b0c5a72e))
+* fix: hey 5 ([`398d2ac`](https://github.com/mgvalverde/experiment-gh-actions/commit/398d2ac8a79bbcc408d700174f6b3839a2f49109))
 
 ## v0.1.0 (2024-08-24)
 
@@ -73,6 +65,18 @@
 * feat: add code ([`226b368`](https://github.com/mgvalverde/experiment-gh-actions/commit/226b36828c810c9925034782a2582d5be8c0dfe0))
 
 ### Fix
+
+* fix: hey 5 ([`9ce8aed`](https://github.com/mgvalverde/experiment-gh-actions/commit/9ce8aed6f4995e3b6cb9f52516837d3088238f06))
+
+* fix: hey 4 ([`0a3143e`](https://github.com/mgvalverde/experiment-gh-actions/commit/0a3143e4031ac168dff19498f215ce9f809d5203))
+
+* fix: hey 3 ([`39e8e67`](https://github.com/mgvalverde/experiment-gh-actions/commit/39e8e6792652c27544283ed2528ab299755aca0b))
+
+* fix: hey 2 ([`7505012`](https://github.com/mgvalverde/experiment-gh-actions/commit/75050129a405c1160ac0de40af033fa4b58aaa91))
+
+* fix: hey ([`6f190f9`](https://github.com/mgvalverde/experiment-gh-actions/commit/6f190f9f533753de69ead01f0ede361335b2cbee))
+
+* fix: hey ([`68b7892`](https://github.com/mgvalverde/experiment-gh-actions/commit/68b7892848643734dee2f41580c73f48b0c5a72e))
 
 * fix: sth ([`7bdf21f`](https://github.com/mgvalverde/experiment-gh-actions/commit/7bdf21f0c6dd53361fecd938179a1fce7b724be0))
 
