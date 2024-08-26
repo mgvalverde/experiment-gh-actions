@@ -31,8 +31,8 @@ jobs:
       contents: write
 
     env:
-      TARGET_VERSION: ${{inputs.ref_tag}}
-      SHORT_VERSION: $(echo ${{inputs.ref_tag}}  | sed -E 's/(v[0-9]+\.[0-9]+)\.[0-9]+/\1.x/')
+      INPUT_VERSION: ${{inputs.ref_tag}}
+      LATEST_VERSION: $(git tag --sort=taggerdate | tail -1 | cut -c2-)
 
     steps:
       - name: Set up Python ${{ env.PYTHON_VERSION }}
@@ -41,11 +41,14 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
       - name: Install Poetry v${{ env.POETRY_VERSION }}
         run: pipx install poetry==${{ env.POETRY_VERSION }}
+      - name: Get Target Version
+        run: |
+          echo "TARGET_VERSION=${{env.INPUT_VERSION}}:-${{env.LATEST_VERSION}}" >> $GITHUB_ENV
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: "v${{env.TARGET_VERSION}}"
+          ref: ${{env.TARGET_VERSION}}
       - name: Setup git user
         run: |
           git config user.name github-actions
@@ -53,9 +56,11 @@ jobs:
       - name: Install dev dependencies
         run: poetry install --no-interaction --only=dev  # NOTE: this is needed for mkdocs etc
       - name: Publish new docs version
+        env:
+          SHORT_VERSION: $(echo ${{env.TARGET_VERSION}}  | sed -E 's/(v[0-9]+\.[0-9]+)\.[0-9]+/\1.x/')
         run: poetry run mike deploy \
           --push \
-          --update-aliases "v${{env.SHORT_VERSION}}" latest
+          --update-aliases ${{env.SHORT_VERSION}} latest
       - name: Set alias for latest
         run: poetry run mike set-default latest --push
 
