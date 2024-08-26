@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## v0.3.0 (2024-08-26)
+
+### Feature
+
+* feat: 2 ([`a99e0a3`](https://github.com/mgvalverde/experiment-gh-actions/commit/a99e0a343cf6ac91d1674c4a1d384d9ac5f8dc7f))
+
+### Unknown
+
+* bug: 2 ([`8c2a81c`](https://github.com/mgvalverde/experiment-gh-actions/commit/8c2a81c6c322be726bc43239e9fc4634e4adf914))
+
+* bug: 2 ([`29f0384`](https://github.com/mgvalverde/experiment-gh-actions/commit/29f0384f52d799e67c743a99c68bdc5e482c74ee))
+
 ## v0.2.0 (2024-08-26)
 
 ### Feature
