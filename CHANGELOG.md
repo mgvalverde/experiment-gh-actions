@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.4.0 (2024-08-26)
+
+### Feature
+
+* feat: 3 ([`d5d9f77`](https://github.com/mgvalverde/experiment-gh-actions/commit/d5d9f77b4b71c51ddaa2f3af874b0b7aa31dd838))
+
 ## v0.3.0 (2024-08-26)
 
 ### Feature
