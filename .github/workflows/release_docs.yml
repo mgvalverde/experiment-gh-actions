@@ -61,5 +61,5 @@ jobs:
           --push \
           --update-aliases ${{env.X_VERSION}} latest
       - name: Set alias for latest
-        run: poetry run mike set-default latest --push
+        run: poetry run mike set-default --push latest
 
