@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## v0.18.0 (2024-08-26)
+
+### Feature
+
+* feat: 27 ([`7657bfe`](https://github.com/mgvalverde/experiment-gh-actions/commit/7657bfe04649355c36719877369277dbec800b0b))
+
+### Unknown
+
+* Update main.yml ([`8b3500c`](https://github.com/mgvalverde/experiment-gh-actions/commit/8b3500c7cbb14b603cc3ce92b960f9969cfd79a8))
+
+* Create main.yml ([`5aea4bf`](https://github.com/mgvalverde/experiment-gh-actions/commit/5aea4bf727fabf6f3915c838e17d0f0c2b3f341f))
+
 ## v0.17.0 (2024-08-26)
 
 ### Feature
