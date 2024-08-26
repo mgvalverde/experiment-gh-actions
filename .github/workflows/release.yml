@@ -37,12 +37,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install dev dependencies
-        run: poetry install --no-interaction --only=dev  # NOTE: is this needed?
-
       - name: Use Python Semantic Release to prepare release
         id: release
-        uses: python-semantic-release/python-semantic-release@v9.8.6
+        run: poetry run  semantic-release version --no-vcs-release
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
