@@ -135,4 +135,4 @@ jobs:
       - name: Build docs
         run: poetry run mkdocs build
       - name: Publish docs
-        run: poetry run mkdocs gh-deploy  # Calls another workflow
+        run: poetry run mkdocs gh-deploy --force # Calls another workflow
