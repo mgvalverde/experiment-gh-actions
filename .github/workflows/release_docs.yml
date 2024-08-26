@@ -36,7 +36,9 @@ jobs:
       - name: Install dev dependencies
         run: poetry install --no-interaction --only=dev  # NOTE: this is needed for mkdocs etc
       - name: Set env
-        run: echo "PKG_VERSION=$(poetry run semantic-release version --print-last-released)" >> $GITHUB_ENV
+        run: |
+          echo "PKG_VERSION=$(poetry run semantic-release version --print-last-released)" >> $GITHUB_ENV
+          echo "Docs version: $PKG_VERSION"
 
       - name: Publish new docs version
         run: poetry run mike deploy \
