@@ -90,8 +90,10 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       - name: Installation test
+        env:
+          TARGET_VERSION: ${{needs.build.outputs.target_version}}
         run: |
-          pip install -i https://test.pypi.org/simple/ experiment-gh-actions==${{needs.build.outputs.target_version}}
+          pip install -i https://test.pypi.org/simple/ experiment-gh-actions==$TARGET_VERSION
           python -c "import blabla; print('Package successfully installed')"
 
 
@@ -138,9 +140,11 @@ jobs:
         run: pipx install poetry==${{ env.POETRY_VERSION }}
       - name: Checkout code
         uses: actions/checkout@v4
+        env:
+          TARGET_VERSION: ${{needs.build.outputs.target_version}}
         with:
           fetch-depth: 0
-          ref: "v${{needs.build.outputs.target_version}}"
+          ref: "v${TARGET_VERSION}"
       - name: Setup git user
         run: |
           git config user.name github-actions
@@ -148,9 +152,11 @@ jobs:
       - name: Install dev dependencies
         run: poetry install --no-interaction --only=dev  # NOTE: this is needed for mkdocs etc
       - name: Publish new docs version
+        env:
+          TARGET_VERSION: ${{needs.build.outputs.target_version}}
         run: poetry run mike deploy \
           --push \
-          --update-aliases "v${{needs.build.outputs.target_version}}" latest
+          --update-aliases "v${TARGET_VERSION}" latest
       - name: Set alias for latest
         run: poetry run mike set-default latest --push
 
