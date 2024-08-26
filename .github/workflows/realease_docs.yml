@@ -31,10 +31,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - name: Install dev dependencies
         run: poetry install --no-interaction --only=dev  # NOTE: this is needed for mkdocs etc
-#      - name: Build docs
-#        run: poetry run mkdocs build
-      - name: Publish docs
-        run: poetry run mkdocs gh-deploy --force  # Calls another workflow
+      - name: Set alias for latest
+        run: poetry run mike set-default --push latest
+      - name: Publish new docs version
+        run: poetry run mike deploy \
+          --push \
+          --update-aliases $(semantic-release version --print-last-released) latest  # Calls another workflow
