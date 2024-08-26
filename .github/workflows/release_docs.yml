@@ -13,6 +13,7 @@ jobs:
   publish-docs:
     name: Publish Docs
     runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
 
     permissions:
       id-token: write
@@ -28,7 +29,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: ${{inputs.tag}}
           fetch-depth: 0
       - name: Setup git user
         run: |

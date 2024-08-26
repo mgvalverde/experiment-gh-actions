@@ -11,6 +11,7 @@ packages = [{include = "blabla/"}]
 python = "^3.9"
 
 
+
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.6.2"
 black = "^24.8.0"
