@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     # Map a step output to a job output
     outputs:
-      output1: ${{ steps.step1.outputs.test }}
+      output1: ${{ steps.step1.outputs.target_tag }}
       output2: ${{ steps.step2.outputs.test }}
     steps:
       - id: step1
-        run: echo "target_tag={git describe --exact-match}" >> "$GITHUB_OUTPUT"
+        run: echo "target_tag=$(git describe --exact-match)" >> "$GITHUB_OUTPUT"
       - id: step2
         run: echo "test=world" >> "$GITHUB_OUTPUT"
   job2:
