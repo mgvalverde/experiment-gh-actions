@@ -56,6 +56,18 @@ jobs:
         id: export_version
         run: echo "target_version=$(poetry run semantic-release version --print-last-released)" >> $GITHUB_OUTPUT
 
+  check:
+    name: Checks previous outputs
+    runs-on: ubuntu-latest
+    needs:
+      - build
+    steps:
+      - name: Installation test
+        env:
+          TARGET_VERSION: ${{needs.build.outputs.target_version}}
+        run: |
+          echo "${TARGET_VERSION}"
+          
 
   publish-to-test-pypi:
     name: Publish to Test PyPI
@@ -93,7 +105,7 @@ jobs:
         env:
           TARGET_VERSION: ${{needs.build.outputs.target_version}}
         run: |
-          pip install -i https://test.pypi.org/simple/ experiment-gh-actions==$TARGET_VERSION
+          pip install -i https://test.pypi.org/simple/ experiment-gh-actions=="${TARGET_VERSION}"
           python -c "import blabla; print('Package successfully installed')"
 
 
