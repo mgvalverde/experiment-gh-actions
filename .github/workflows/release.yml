@@ -16,7 +16,7 @@ env:
 jobs:
 
   build:
-    name: Release GH
+    name: Build
     runs-on: ubuntu-latest
 
     permissions:
@@ -42,53 +42,39 @@ jobs:
         uses: python-semantic-release/python-semantic-release@v9.8.6
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          vcs_release: false
 
       - uses: actions/upload-artifact@v3
         with:
           name: python-package-distributions
           path: dist/
 
-#      - name: Publish to TestPyPI
-#        uses: pypa/gh-action-pypi-publish@release/v1
-#        if: steps.release.outputs.released == 'true'
-#        with:
-#          repository-url: https://test.pypi.org/legacy/
-#
-#      - name: Test install from TestPyPI        # Note: needs to sleep to give a PyPI a moment, otherwise it installs the previous version
-#        run: |
-#            sleep 15
-#            pip install \
-#            --index-url https://test.pypi.org/simple/ \
-#            --extra-index-url https://pypi.org/simple \
-#            experiment-gh-actions
-#            python -c "import blabla; print('Import successful')"
-#
-#      - name: Publish to PyPI
-#        uses: pypa/gh-action-pypi-publish@release/v1
-#        if: steps.release.outputs.released == 'true'
-#
-#      - name: Publish package distributions to GitHub Releases
-#        uses: python-semantic-release/upload-to-gh-release@main
-#        if: steps.release.outputs.released == 'true'
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#
-#      - name: Build docs
-#        run: poetry run mkdocs build
-#
-#      - name: Publish docs
-#        run: poetry run mkdocs gh-deploy
-#
-  release-gh:
-    name: Release Github
+
+  publish-to-test-pypi:
+    name: Publish to Test PyPI
     runs-on: ubuntu-latest
     needs:
       - build
 
-    environment:
-      name: pypi
-      url: https://test.pypi.org/p/experiment-gh-actions
+    permissions:
+      id-token: write
+      contents: write
+
+    steps:
+      - name: Download all the dists
+        uses: actions/download-artifact@v3
+        with:
+          name: python-package-distributions
+          path: dist/
+      - name: Publish distribution 📦 to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
+
+  publish-to-pypi:
+    name: Publish to PyPI
+    runs-on: ubuntu-latest
+    needs:
+      - publish-to-test-pypi
 
     permissions:
       id-token: write
@@ -106,32 +92,3 @@ jobs:
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
 
-#  release-testpypi:
-#    name: Release Test PyPI
-#    environment:
-#      name: pypi
-#      url: https://test.pypi.org/p/experiment-gh-actions
-#    needs:
-#      - release-gh
-#
-#    permissions:
-#      id-token: write
-#      contents: write
-#    steps:
-#
-#  release-pypi:
-#    needs:
-#      - release-testpypi
-#
-#    name: Release PyPI
-#    runs-on: ubuntu-latest
-#    environment:
-#      name: pypi
-#      url: https://pypi.org/p/experiment-gh-actions
-#
-#    permissions:
-#      id-token: write
-#      contents: write
-#
-#    steps:
-#
