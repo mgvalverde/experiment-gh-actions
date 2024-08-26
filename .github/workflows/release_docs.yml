@@ -42,8 +42,9 @@ jobs:
       - name: Install Poetry v${{ env.POETRY_VERSION }}
         run: pipx install poetry==${{ env.POETRY_VERSION }}
       - name: Get Target Version
-        run: |
-          echo "TARGET_VERSION=${{env.INPUT_VERSION || env.LATEST_VERSION}} " >> $GITHUB_ENV
+        run: echo "TARGET_VERSION=${{env.INPUT_VERSION || env.LATEST_VERSION}} " >> $GITHUB_ENV
+      - name: Get Short Version
+        run: echo "X_VERSION=$(echo ${{env.TARGET_VERSION}}  | sed -E 's/(v[0-9]+\.[0-9]+)\.[0-9]+/\1.x/')" >> $GITHUB_ENV
       - name: Checkout code
         uses: actions/checkout@v4
         with:
@@ -56,11 +57,9 @@ jobs:
       - name: Install dev dependencies
         run: poetry install --no-interaction --only=dev  # NOTE: this is needed for mkdocs etc
       - name: Publish new docs version
-        env:
-          SHORT_VERSION: $(echo ${{env.TARGET_VERSION}}  | sed -E 's/(v[0-9]+\.[0-9]+)\.[0-9]+/\1.x/')
         run: poetry run mike deploy \
           --push \
-          --update-aliases ${{env.SHORT_VERSION}} latest
+          --update-aliases ${{env.X_VERSION}} latest
       - name: Set alias for latest
         run: poetry run mike set-default latest --push
 
