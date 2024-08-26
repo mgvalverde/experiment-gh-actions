@@ -35,9 +35,12 @@ jobs:
           git config user.email github-actions@github.com
       - name: Install dev dependencies
         run: poetry install --no-interaction --only=dev  # NOTE: this is needed for mkdocs etc
+      - name: Set env
+        run: echo "PKG_VERSION=$(poetry run semantic-release version --print-last-released)" >> $GITHUB_ENV
+
       - name: Publish new docs version
         run: poetry run mike deploy \
           --push \
-          --update-aliases $(semantic-release version --print-last-released) latest  # Calls another workflow
+          --update-aliases $PKG_VERSION latest  # Calls another workflow
       - name: Set alias for latest
         run: poetry run mike set-default --push latest
