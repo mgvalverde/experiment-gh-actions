@@ -15,15 +15,19 @@ env:
 
 jobs:
 
-  build:
-    name: Build & GH release
+  release:
+    name: Continuous Deployment
     runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://test.pypi.org/p/experiment-gh-actions
 
     permissions:
       id-token: write
       contents: write
 
     steps:
+
       - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v5
         with:
@@ -38,18 +42,13 @@ jobs:
           fetch-depth: 0
 
       - name: Install dev dependencies
-        run: poetry install --no-interaction --only=dev  # NOTE: is this needed?
+        run: poetry install --no-interaction --only=dev  # NOTE: is this needed
 
       - name: Use Python Semantic Release to prepare release
         id: release
         uses: python-semantic-release/python-semantic-release@v9.8.6
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: python-package-distributions
-          path: dist/
 
       - name: Publish to TestPyPI
         uses: pypa/gh-action-pypi-publish@release/v1
@@ -81,50 +80,3 @@ jobs:
 
       - name: Publish docs
         run: poetry run mkdocs gh-deploy
-
-  release-gh:
-    name: Release Github
-    runs-on: ubuntu-latest
-    needs:
-      - build
-
-    environment:
-      name: pypi
-      url: https://test.pypi.org/p/experiment-gh-actions
-
-    permissions:
-      id-token: write
-      contents: write
-
-    steps:
-
-
-  release-testpypi:
-    name: Release Test PyPI
-    environment:
-      name: pypi
-      url: https://test.pypi.org/p/experiment-gh-actions
-    needs:
-      - release-gh
-
-    permissions:
-      id-token: write
-      contents: write
-    steps:
-
-  release-pypi:
-    needs:
-      - release-testpypi
-
-    name: Release PyPI
-    runs-on: ubuntu-latest
-    environment:
-      name: pypi
-      url: https://pypi.org/p/experiment-gh-actions
-
-    permissions:
-      id-token: write
-      contents: write
-
-    steps:
-
