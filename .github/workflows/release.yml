@@ -50,8 +50,8 @@ jobs:
           if-no-files-found: 'error'
 
       - name: Save Tag reference
-        id: tag_version
-        run: echo "TAG_VERSION=$(git describe --exact-match)" >> $GITHUB_OUTPUT
+        id: target_version
+        run: echo "target_version=$(poetry run semantic-release version --print-last-released)" >> $GITHUB_OUTPUT
 
 
   publish-to-test-pypi:
@@ -113,14 +113,40 @@ jobs:
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
 
-
   publish-docs:
-    uses: ./.github/workflows/release_docs.yml
+    name: Publish Docs
+    runs-on: ubuntu-latest
+
     needs:
       - build
       - test-installation-testpypi
+
     permissions:
       id-token: write
       contents: write
-    with:
-      ref: ${{needs.build.outputs.TAG_VERSION}}
+
+    steps:
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install Poetry v${{ env.POETRY_VERSION }}
+        run: pipx install poetry==${{ env.POETRY_VERSION }}
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: "v${{needs.build.outputs.target_version}}"
+      - name: Setup git user
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+      - name: Install dev dependencies
+        run: poetry install --no-interaction --only=dev  # NOTE: this is needed for mkdocs etc
+      - name: Publish new docs version
+        run: poetry run mike deploy \
+          --push \
+          --update-aliases "v${{needs.build.outputs.target_version}}" latest
+      - name: Set alias for latest
+        run: poetry run mike set-default latest --push
+

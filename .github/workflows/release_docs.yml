@@ -2,6 +2,7 @@ name: Publish Docs
 
 on:
   workflow_dispatch:
+
   workflow_call:
     inputs:
       ref:
@@ -25,6 +26,13 @@ jobs:
       contents: write
 
     steps:
+      - name: Get Tag
+        run: | 
+          if [[ "${{inputs.ref}}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then  
+              echo "TAG_VERSION=${{inputs.ref}}" >> $GITHUB_ENV  
+            else  
+              echo "TAG_VERSION=v$(poetry run semantic-release version --print-last-released )" >> $GITHUB_ENV
+            fi
 
       - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v5
@@ -49,4 +57,4 @@ jobs:
           --push \
           --update-aliases ${{inputs.ref}} latest
       - name: Set alias for latest
-        run: poetry run mike set-default --push latest
+        run: poetry run mike set-default latest --push
