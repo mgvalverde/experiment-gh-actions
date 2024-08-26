@@ -44,7 +44,7 @@ jobs:
         run: poetry run bandit -r ./blabla/ --quiet
 
       - name: Test with pytest
-        run: poetry run pytest tests/ --cov=pycounts --cov-report=xml # store in cov
+        run: poetry run pytest tests/ --cov=blabla --cov-report=xml # store in cov
 
       - name: Archive code coverage html report    #
         if: ${{ matrix.python-version == '3.9'}}
