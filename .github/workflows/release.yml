@@ -122,4 +122,4 @@ jobs:
       id-token: write
       contents: write
     with:
-      ref: tags/${{needs.build.outputs.TAG_VERSION}}
+      ref: ${{needs.build.outputs.TAG_VERSION}}
