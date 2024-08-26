@@ -152,27 +152,9 @@ jobs:
       TARGET_VERSION: ${{needs.build.outputs.target_version}}
 
     steps:
-      - name: Set up Python ${{ env.PYTHON_VERSION }}
-        uses: actions/setup-python@v5
+      - name: Trigger docs publisher
+        uses: .github/workflows/release_docs.yml
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
-      - name: Install Poetry v${{ env.POETRY_VERSION }}
-        run: pipx install poetry==${{ env.POETRY_VERSION }}
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          ref: "v${{env.TARGET_VERSION}}"
-      - name: Setup git user
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-      - name: Install dev dependencies
-        run: poetry install --no-interaction --only=dev  # NOTE: this is needed for mkdocs etc
-      - name: Publish new docs version
-        run: poetry run mike deploy \
-          --push \
-          --update-aliases "v${{env.TARGET_VERSION}}" latest
-      - name: Set alias for latest
-        run: poetry run mike set-default latest --push
+          ref_tag: "v${{env.TARGET_VERSION}}"
+
 
