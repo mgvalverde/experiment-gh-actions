@@ -43,7 +43,7 @@ jobs:
         run: pipx install poetry==${{ env.POETRY_VERSION }}
       - name: Get Target Version
         run: |
-          echo "TARGET_VERSION=${{env.INPUT_VERSION}}:-${{env.LATEST_VERSION}}" >> $GITHUB_ENV
+          echo "TARGET_VERSION=${{env.INPUT_VERSION || env.LATEST_VERSION}} " >> $GITHUB_ENV
       - name: Checkout code
         uses: actions/checkout@v4
         with:
