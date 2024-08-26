@@ -101,12 +101,17 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-      - name: Installation test
+      - name: Installation test (with retry)
+        uses: nick-fields/retry@v2
         env:
           TARGET_VERSION: ${{needs.build.outputs.target_version}}
-        run: |
-          pip install -i https://test.pypi.org/simple/ experiment-gh-actions=="${TARGET_VERSION}"
-          python -c "import blabla; print('Base import: OK')"
+        with:
+          timeout_minutes: 5
+          max_attempts: 3
+          command: |
+            pip install -i https://test.pypi.org/simple/ experiment-gh-actions=="${TARGET_VERSION}"
+            python -c "import blabla; print('Base import: OK')"
+
 
 
   publish-to-pypi:

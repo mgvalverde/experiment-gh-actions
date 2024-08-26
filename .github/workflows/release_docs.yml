@@ -24,8 +24,10 @@ jobs:
     permissions:
       id-token: write
       contents: write
+
     env:
       ref_tag: ${{inputs.ref_tag}}
+
     steps:
       - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v5
