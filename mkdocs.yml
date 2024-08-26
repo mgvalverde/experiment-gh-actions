@@ -6,6 +6,10 @@ theme:
 plugins:
   - mkdocstrings
 
+extra:
+  version:
+    provider: mike
+
 nav:
   - Welcome: index.md
   - Tutorials: tutorials.md
