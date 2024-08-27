@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.38.1 (2024-08-27)
+
+### Fix
+
+* fix: 01 ([`ce0ff77`](https://github.com/mgvalverde/experiment-gh-actions/commit/ce0ff77b274b901da2d1ee47896ee1882ce874cd))
+
 ## v0.38.0 (2024-08-27)
 
 ### Feature
