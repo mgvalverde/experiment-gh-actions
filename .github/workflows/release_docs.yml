@@ -25,29 +25,31 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: '${{ github.token }}'
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
+      # Deps
       - name: Install Poetry v${{ env.POETRY_VERSION }}
         run: pipx install poetry==${{ env.POETRY_VERSION }}
       - name: Install dev dependencies
         run: poetry install --no-interaction --only=dev  # NOTE: this is needed for mkdocs etc
-
+      # Env vars
       - run: |
           TAG=${{github.event.release.tag_name || github.event.client_payload.tag_name || inputs.tag_name || env.LATEST_TAG}}
           echo "TARGET_TAG=$TAG" >> $GITHUB_ENV
       - run: |
           echo "TARGET_VERSION=$(echo ${{env.TARGET_TAG}}  | sed -E 's/(v[0-9]+\.[0-9]+)\.[0-9]+/\1.x/')" >> $GITHUB_ENV
-
+      # Ops
       - name: Setup Docs Deploy
         run: |
           git config --global user.name "Docs Deploy"
           git config --global user.email "docs-deploy@users.noreply.github.com"
-
       - name: Build Docs Website
         run: | 
           poetry run mike deploy --update-aliases --push ${{ env.TARGET_VERSION }} latest
           poetry run mike set-default --push latest
+      # Trigger build
       - name: Trigger GitHub pages rebuild
         run: |
           curl --fail --request POST \
