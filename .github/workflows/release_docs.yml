@@ -58,10 +58,7 @@ jobs:
       - name: Install dev dependencies
         run: poetry install --no-interaction --only=dev  # NOTE: this is needed for mkdocs etc
       - name: Publish new docs version
-        env:
-          GITH
         run: | 
-          git pull --all
           poetry run mike deploy \
           --update-aliases ${{env.X_VERSION}} latest
           poetry run mike set-default latest
