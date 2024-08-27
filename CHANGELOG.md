@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.37.17 (2024-08-27)
+
+### Fix
+
+* fix: 02 ([`8dbab7a`](https://github.com/mgvalverde/experiment-gh-actions/commit/8dbab7a3390c5b5f00884d764d9d2d7538360490))
+
 ## v0.37.16 (2024-08-27)
 
 ### Fix
