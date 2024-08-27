@@ -50,7 +50,7 @@ jobs:
           poetry run mike deploy --update-aliases --push ${{ env.TARGET_VERSION }} latest
           poetry run mike set-default --push latest
         env:
-          GITHUB_TOKEN=${{ secrets.PAT_PUBLISH_DOCS }}
+          GITHUB_TOKEN: ${{ secrets.PAT_PUBLISH_DOCS }}
       # Trigger build
       - name: Trigger GitHub pages rebuild
         run: |
