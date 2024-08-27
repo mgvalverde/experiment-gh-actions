@@ -1,5 +1,35 @@
 # CHANGELOG
 
+## v0.37.19 (2024-08-27)
+
+### Fix
+
+* fix: final ([`bcb7105`](https://github.com/mgvalverde/experiment-gh-actions/commit/bcb7105340e503373f9243666e8cb61b623d6897))
+
+* fix: 02 ([`c199d96`](https://github.com/mgvalverde/experiment-gh-actions/commit/c199d964f7c41953795231b467b2d07c5ac904af))
+
+* fix: 02 ([`666154d`](https://github.com/mgvalverde/experiment-gh-actions/commit/666154d0cffc41bb1ffc41233ea82181acc10b53))
+
+* fix: 02 ([`6e153af`](https://github.com/mgvalverde/experiment-gh-actions/commit/6e153af620d489c55280b4fc55d28469a3483ed2))
+
+* fix: 02 ([`a42bcd3`](https://github.com/mgvalverde/experiment-gh-actions/commit/a42bcd32aced6f89f91cd44f7ec4fea29631dd42))
+
+* fix: 02 ([`9a4c4b3`](https://github.com/mgvalverde/experiment-gh-actions/commit/9a4c4b305a658304728aaf275480799e5f64e3c9))
+
+* fix: 02 ([`16ff8df`](https://github.com/mgvalverde/experiment-gh-actions/commit/16ff8df0e829a30c026010faaedbef20d4d53556))
+
+* fix: 02 ([`112cea7`](https://github.com/mgvalverde/experiment-gh-actions/commit/112cea7d90eae7dd19343511477cf8f2029e21e2))
+
+* fix: 02 ([`c0c39e7`](https://github.com/mgvalverde/experiment-gh-actions/commit/c0c39e7a27cbe89642c3625da13803ae051f7245))
+
+* fix: 02 ([`0715376`](https://github.com/mgvalverde/experiment-gh-actions/commit/0715376f88a154f288e1312dd8789ef239e4cf13))
+
+* fix: 02 ([`266c6e8`](https://github.com/mgvalverde/experiment-gh-actions/commit/266c6e822502245189e2135e791a95301c9a3406))
+
+* fix: 02 ([`e2c382f`](https://github.com/mgvalverde/experiment-gh-actions/commit/e2c382f303290cf3ca00eac402ebe80e66ff548d))
+
+* fix: 02 ([`229502b`](https://github.com/mgvalverde/experiment-gh-actions/commit/229502b17589a5aeb2bff6bd0e09cb9861473c4c))
+
 ## v0.37.18 (2024-08-27)
 
 ### Fix
