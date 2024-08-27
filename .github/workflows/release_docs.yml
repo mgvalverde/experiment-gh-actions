@@ -16,7 +16,7 @@ env:
   LATEST_TAG: $(git tag --sort=taggerdate | tail -1 | cut -c2-)
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   deploy:
