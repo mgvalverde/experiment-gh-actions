@@ -41,11 +41,9 @@ jobs:
         run: | 
           poetry run mike deploy --update-aliases ${{ env.TARGET_VERSION }} latest
 #          poetry run mike set-default --push latest
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          ref: gh-pages
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.PAT_PUBLISH_DOCS }}
+          branch: gh-pages
+
