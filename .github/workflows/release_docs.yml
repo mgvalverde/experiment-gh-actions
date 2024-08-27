@@ -46,7 +46,7 @@ jobs:
           git config --global user.email "docs-deploy@users.noreply.github.com"
       - name: Build Docs Website
         run: | 
-          poetry run mike deploy --update-aliases --push --force ${{ env.TARGET_VERSION }} latest
+          poetry run mike deploy --update-aliases --push ${{ env.TARGET_VERSION }} latest
           poetry run mike set-default --push latest
       # Trigger build
       - name: Trigger GitHub pages rebuild
