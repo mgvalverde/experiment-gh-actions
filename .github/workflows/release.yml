@@ -136,7 +136,8 @@ jobs:
       id-token: write
       contents: write
 
-    secrets: inherit
+    secrets:
+      inherit: true
     with:
       ref_tag: "v${{needs.build.outputs.target_version}}"
 
