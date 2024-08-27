@@ -1,5 +1,5 @@
 name: Release
-run-name: Release Package - ${{github.ref_name}} 🚀
+run-name: Package Release - ${{github.sha}} 🚀
 
 on:
   push:
