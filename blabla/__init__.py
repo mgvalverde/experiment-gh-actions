@@ -1,5 +1,5 @@
 from .numbers import uno, dos, tres
-const = 23
+const = 25
 
 
 __all__ = [
