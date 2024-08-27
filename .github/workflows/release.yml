@@ -47,7 +47,7 @@ jobs:
         with:
           git_committer_name: mgvalverde
           git_committer_email: m.gilvalverde@gmail.com
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PAT_RELEASES }}
 
       - uses: actions/upload-artifact@v4
         with:
