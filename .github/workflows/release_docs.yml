@@ -1,69 +1,35 @@
-name: Publish Docs
+name: Build/Publish Latest Release Docs
 
 on:
-  workflow_dispatch:
-    inputs:
-      ref_tag:
-        description: "Tag. It'll be use to tag also the docs version. This tag must exist, and applied to an existing commit"
-        type: string
-        required: false
-        default: ""
-  workflow_call:
-    inputs:
-      ref_tag:
-        description: "Tag. It'll be use to tag also the docs version. This tag must exist, and applied to an existing commit"
-        type: string
-        required: false
-        default: ""
+  release:
+    types: [published]
 
-env:
-  POETRY_VERSION: "1.8.3"
-  PYTHON_VERSION: "3.9"
-
+permissions:
+  contents: write
 jobs:
-
-  publish-docs:
-    name: Publish Docs
+  deploy:
     runs-on: ubuntu-latest
-
-    permissions:
-      id-token: write
-      contents: write
-
-    env:
-      INPUT_VERSION: ${{inputs.ref_tag}}
-      LATEST_VERSION: $(git tag --sort=taggerdate | tail -1 | cut -c2-)
-
     steps:
-      - name: Set up Python ${{ env.PYTHON_VERSION }}
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       - name: Install Poetry v${{ env.POETRY_VERSION }}
         run: pipx install poetry==${{ env.POETRY_VERSION }}
-      - name: Get Target Version
-        run: echo "TARGET_VERSION=${{env.INPUT_VERSION || env.LATEST_VERSION}} " >> $GITHUB_ENV
-      - name: Get Short Version
-        run: echo "X_VERSION=$(echo ${{env.TARGET_VERSION}}  | sed -E 's/(v[0-9]+\.[0-9]+)\.[0-9]+/\1.x/')" >> $GITHUB_ENV
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          ref: ${{env.TARGET_VERSION}}
-          persist-credentials: false
-      - name: Setup git user
-        run: |
-          git config user.name docs-publisher
-          git config user.email docs-publisher@users.noreply.github.com
       - name: Install dev dependencies
         run: poetry install --no-interaction --only=dev  # NOTE: this is needed for mkdocs etc
-      - name: Publish new docs version
-        run: | 
-          poetry run mike set-default latest
-          poetry run mike deploy --push --update-aliases ${{env.X_VERSION}} latest
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.PAT_PUBLISH_DOCS}}
-          branch: gh-pages
 
+      - name: Get target version
+        run: echo "TARGET_VERSION=$(echo ${{github.event.release.tag_name}}  | sed -E 's/(v[0-9]+\.[0-9]+)\.[0-9]+/\1.x/')" >> $GITHUB_ENV
+
+      - name: Setup Docs Deploy
+        run: |
+          git config --global user.name "Docs Deploy"
+          git config --global user.email "users.noreply.github.com"
+
+      - name: Build Docs Website
+        run: | 
+          poetry run mike deploy --push --update-aliases ${{ env.TARGET_VERSION }} latest          
+#          poetry run mike set-default --push latest

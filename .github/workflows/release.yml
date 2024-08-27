@@ -124,21 +124,21 @@ jobs:
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
 
-  publish-docs:
-    name: Publish Docs
-    uses: ./.github/workflows/release_docs.yml
-
-    needs:
-      - build
-      - test-installation-testpypi
-
-    permissions:
-      id-token: write
-      contents: write
-
-    secrets:
-      inherit: true
-    with:
-      ref_tag: "v${{needs.build.outputs.target_version}}"
-
+#  publish-docs:
+#    name: Publish Docs
+#    uses: ./.github/workflows/release_docs.yml
+#
+#    needs:
+#      - build
+#      - test-installation-testpypi
+#
+#    permissions:
+#      id-token: write
+#      contents: write
+#
+#    secrets:
+#      inherit: true
+#    with:
+#      ref_tag: "v${{needs.build.outputs.target_version}}"
+#
 
