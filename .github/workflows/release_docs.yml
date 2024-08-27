@@ -51,6 +51,7 @@ jobs:
           poetry run mike set-default --push latest
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_PUBLISH_DOCS }}
+          GITHUB_USERNAME: mgvalverde
       # Trigger build
       - name: Trigger GitHub pages rebuild
         run: |
