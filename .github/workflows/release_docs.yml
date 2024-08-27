@@ -25,11 +25,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: 'false'
+      # Deps
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-      # Deps
       - name: Install Poetry v${{ env.POETRY_VERSION }}
         run: pipx install poetry==${{ env.POETRY_VERSION }}
       - name: Install dev dependencies
@@ -47,11 +46,8 @@ jobs:
           git config --global user.email "docs-deploy@users.noreply.github.com"
       - name: Build Docs Website
         run: | 
-          poetry run mike deploy --update-aliases --push ${{ env.TARGET_VERSION }} latest
+          poetry run mike deploy --update-aliases --push --force ${{ env.TARGET_VERSION }} latest
           poetry run mike set-default --push latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_PUBLISH_DOCS }}
-          GITHUB_USERNAME: mgvalverde
       # Trigger build
       - name: Trigger GitHub pages rebuild
         run: |
