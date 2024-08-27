@@ -1,4 +1,5 @@
-name: Build/Publish Latest Release Docs
+name: Build/Publish Release Docs
+run-name: Build/Publish Release Docs
 
 on:
   release:
