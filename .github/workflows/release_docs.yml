@@ -59,9 +59,8 @@ jobs:
         run: poetry install --no-interaction --only=dev  # NOTE: this is needed for mkdocs etc
       - name: Publish new docs version
         run: | 
-          poetry run mike deploy \
-          --update-aliases ${{env.X_VERSION}} latest
           poetry run mike set-default latest
+          poetry run mike deploy --push --update-aliases ${{env.X_VERSION}} latest
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
