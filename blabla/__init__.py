@@ -1,6 +1,5 @@
-from .numbers import uno, dos, tres
-def cuatro():
-    return tres() +1
+from .numbers import uno, dos, tres, cuatro
+
 const = 1
 
 

@@ -29,3 +29,13 @@ def tres():
     :rtype: int
     """
     return 3
+
+
+def cuatro():
+    """
+
+    :return: The integer 4
+    :rtype: int
+    """
+
+    return tres() + 1
