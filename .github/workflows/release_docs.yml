@@ -42,8 +42,8 @@ jobs:
       # Ops
       - name: Setup Docs Deploy
         run: |
-          git config --global user.name "Docs Deploy"
-          git config --global user.email "docs-deploy@users.noreply.github.com"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
       - name: Build Docs Website
         run: | 
           poetry run mike deploy --update-aliases --push ${{ env.TARGET_VERSION }} latest
