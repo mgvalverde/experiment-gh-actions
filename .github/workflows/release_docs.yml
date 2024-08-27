@@ -50,10 +50,11 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{env.TARGET_VERSION}}
+          token: ${{ secrets.PAT_PUBLISH_DOCS }}
       - name: Setup git user
         run: |
           git config user.name docs-publisher
-          git config user.email docs-publisher@example.com
+          git config user.email m.gilvalverde@gmail.com
       - name: Install dev dependencies
         run: poetry install --no-interaction --only=dev  # NOTE: this is needed for mkdocs etc
       - name: Publish new docs version
