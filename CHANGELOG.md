@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.38.0 (2024-08-27)
+
+### Feature
+
+* feat: final+1 ([`340eedf`](https://github.com/mgvalverde/experiment-gh-actions/commit/340eedf67a120873a80009573916ad8271d1ac6f))
+
 ## v0.37.19 (2024-08-27)
 
 ### Fix
