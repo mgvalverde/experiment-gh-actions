@@ -39,11 +39,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Use Python Semantic Release to prepare release
         id: release
         uses: python-semantic-release/python-semantic-release@v9.8.6
         with:
+          git_committer_name: mgvalverde
+          git_committer_email: m.gilvalverde@gmail.com
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/upload-artifact@v4
