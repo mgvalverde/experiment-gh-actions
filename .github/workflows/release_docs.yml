@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: '${{ github.token }}'
+          persist-credentials: 'false'
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
@@ -49,6 +49,8 @@ jobs:
         run: | 
           poetry run mike deploy --update-aliases --push ${{ env.TARGET_VERSION }} latest
           poetry run mike set-default --push latest
+        env:
+          GITHUB_TOKEN=${{ secrets.PAT_PUBLISH_DOCS }}
       # Trigger build
       - name: Trigger GitHub pages rebuild
         run: |
