@@ -33,6 +33,8 @@ jobs:
     env:
       INPUT_VERSION: ${{inputs.ref_tag}}
       LATEST_VERSION: $(git tag --sort=taggerdate | tail -1 | cut -c2-)
+      GIT_COMMITTER_NAME: ci-bot
+      GIT_COMMITTER_EMAIL: ci-bot@example.com
 
     steps:
       - name: Set up Python ${{ env.PYTHON_VERSION }}
@@ -48,19 +50,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           ref: ${{env.TARGET_VERSION}}
           token: ${{ secrets.PAT_PUBLISH_DOCS }}
-      - name: Setup git user
-        run: |
-          git config user.name docs-publisher
-          git config user.email m.gilvalverde@gmail.com
+#      - name: Setup git user
+#        run: |
+#          git config user.name ci-bot
+#          git config user.email ci-bot@example.com
       - name: Install dev dependencies
         run: poetry install --no-interaction --only=dev  # NOTE: this is needed for mkdocs etc
       - name: Publish new docs version
-        run: poetry run mike deploy \
+        run: | 
+          poetry run mike deploy \
           --push \
           --update-aliases ${{env.X_VERSION}} latest
-      - name: Set alias for latest
-        run: poetry run mike set-default --push latest
+          poetry run mike set-default --push latest
 
