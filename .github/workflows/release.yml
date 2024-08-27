@@ -61,7 +61,7 @@ jobs:
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.PAT_PUBLISH_DOCS }}
-          repository: mgilvalverde/experiment-gh-actions
+          repository: mgvalverde/experiment-gh-actions
           event-type: release_published
           client-payload: '{"tag_name": "v${{ steps.export_version.outputs.target_version }}"}'
 
