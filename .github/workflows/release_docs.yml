@@ -40,12 +40,17 @@ jobs:
 
       - name: Build Docs Website
         run: | 
-          poetry run mike deploy --update-aliases ${{ env.TARGET_VERSION }} latest
-#          poetry run mike set-default --push latest
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.PAT_PUBLISH_DOCS }}
-          branch: gh-pages
+          poetry run mike deploy --update-aliases --push ${{ env.TARGET_VERSION }} latest
+          poetry run mike set-default --push latest
+            - name: Trigger GitHub pages rebuild
+
+      - name: Trigger GitHub pages rebuild
+        run: |
+          curl --fail --request POST \
+            --url https://api.github.com/repos/${{ github.repository }}/pages/builds \
+            --header "Authorization: Bearer $USER_TOKEN"
+        env:
+          USER_TOKEN: ${{ secrets.PAT_PUBLISH_DOCS }}
+
 
 
