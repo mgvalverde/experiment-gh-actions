@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.39.0 (2024-08-27)
+
+### Feature
+
+* feat: 03 ([`e86cbd5`](https://github.com/mgvalverde/experiment-gh-actions/commit/e86cbd5d7268a23a113186d3259ff92d525c1d09))
+
 ## v0.38.2 (2024-08-27)
 
 ### Fix
