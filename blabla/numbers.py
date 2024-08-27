@@ -38,4 +38,4 @@ def cuatro():
     :rtype: int
     """
 
-    return tres() + 1
+    return dos() + 2
