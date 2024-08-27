@@ -38,7 +38,7 @@ jobs:
           TAG: ${{github.event.release.tag_name || github.event.client_payload.tag_name || inputs.tag_name || env.LATEST_TAG}}
           echo "TARGET_TAG=$TAG" >> $GITHUB_ENV
       - run: |
-          echo "TARGET_VERSION=$(echo ${{env.TARGET_TAG}  | sed -E 's/(v[0-9]+\.[0-9]+)\.[0-9]+/\1.x/')" >> $GITHUB_ENV
+          echo "TARGET_VERSION=$(echo ${{env.TARGET_TAG}}  | sed -E 's/(v[0-9]+\.[0-9]+)\.[0-9]+/\1.x/')" >> $GITHUB_ENV
 
       - name: Setup Docs Deploy
         run: |
