@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v0.40.0 (2024-08-27)
+
+### Feature
+
+* feat: 05 ([`f94d7e0`](https://github.com/mgvalverde/experiment-gh-actions/commit/f94d7e053a889674162c3b2efe268430ecef6266))
+
+### Unknown
+
+* Create trigger_doc_release.yml ([`31d9278`](https://github.com/mgvalverde/experiment-gh-actions/commit/31d92786bef9f364ed71f7e4c7569169bad81574))
+
 ## v0.39.0 (2024-08-27)
 
 ### Feature
