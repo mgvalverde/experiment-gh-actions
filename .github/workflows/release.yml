@@ -40,12 +40,11 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
+          token: ${{ secrets.PAT_RELEASES }}
 
       - name: Use Python Semantic Release to prepare release
-        id: release
         uses: python-semantic-release/python-semantic-release@v9.8.6
-        with:
-          github_token: ${{ secrets.PAT_RELEASES }}
+
 
       - uses: actions/upload-artifact@v4
         with:
