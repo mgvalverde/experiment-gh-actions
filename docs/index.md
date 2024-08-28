@@ -15,8 +15,8 @@ in the [Diátaxis documentation framework](https://diataxis.fr/)
 and consists of four separate parts:
 
 1. [Tutorials](tutorials.md)
-2. [How-To Guides](how-to-guides.md)
-3. [Reference](reference.md)
+2. [How-To Guides](how-to-guides/how-to-guides.md)
+3. [Reference](reference/resolvers/aws.md)
 4. [Explanation](explanation.md)
 4. [Tags](tags.md)
 

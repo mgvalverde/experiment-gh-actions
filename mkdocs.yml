@@ -19,7 +19,7 @@ extra:
 
 nav:
   - Welcome: index.md
-  - Tutorials: tutorials.md
+  - Tutorials: tutorials/
   - How-to guides: how-to-guides.md
   - Explanation: explanation.md
   - Reference: reference.md
