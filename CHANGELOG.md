@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.41.0 (2024-08-28)
+
+### Feature
+
+* feat: 08 ([`050e2be`](https://github.com/mgvalverde/experiment-gh-actions/commit/050e2beddd58d255bbbabe45d0a33db21faad46e))
+
 ## v0.40.0 (2024-08-27)
 
 ### Feature
