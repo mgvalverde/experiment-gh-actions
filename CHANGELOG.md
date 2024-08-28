@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.42.0 (2024-08-28)
+
+### Feature
+
+* feat: 10 ([`9045ec5`](https://github.com/mgvalverde/experiment-gh-actions/commit/9045ec58e5c24d735b84d3ae3b7c946978b79e6e))
+
 ## v0.41.0 (2024-08-28)
 
 ### Feature
